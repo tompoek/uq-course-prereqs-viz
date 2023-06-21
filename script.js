@@ -1,36 +1,22 @@
-
-const txt_file = "output.txt";
-course = "MATH2001";
-output = {name: course, children: []}
-
-const reader = require("fs");
-const txt_contents = reader.readFileSync(txt_file, "utf-8");
-
-keyword = course+",prerequisite,";
 // >> TODO: make it a recursive loop,
 // >> consider BFS first
-if(txt_contents.search(keyword)!=-1) {
-  lines = txt_contents.slice(txt_contents.search(keyword)+keyword.length);
-  line = lines.slice(0, lines.search(/\r?\n/));
-  children = get_children(line);
-  children.forEach((child) => {
-    output.children.push({name: child});
-  })
+function search_children(course) {
+  output = {name: course, children: []};
+  keyword = course+",prerequisite,";
+  if(txt_contents.search(keyword)!=-1) {
+    lines = txt_contents.slice(txt_contents.search(keyword)+keyword.length);
+    line = lines.slice(0, lines.search(/\r?\n/));
+    children = get_children(line);
+    children.forEach((child) => {
+      output.children.push({name: child, children: []});
+      // >> Experiment recursive loop... this would be DFS
+      // output.children.push(search_children(child));
+      // << Experiment recursive loop.
+    })
+  }
+  return output;
 }
 // << TODO
-
-output_to_json = JSON.stringify(output);
-
-var writer = require("fs");
-writer.writeFile("output.json", output_to_json, function(err) {
-    if (err) {
-      console.log(err);
-    }
-    else {
-      console.log("Output to JSON is successful! Congrats!!")
-    }
-});
-
 
 
 function get_children(line) {
@@ -51,11 +37,59 @@ function get_children(line) {
   while(line.search(" or ")!=-1) {line = line.replace(" or ", ",")};
   // << TOFIX: for now, we naively remove all "OR"
 
-  line.split(",").forEach((leaf) => {children.push(leaf)});
+  line.split(",").forEach((leaf) => {
+    if(is_course_code(leaf)) {children.push(leaf)}
+  });
 
   return children;
 };
 
 
+function is_course_code(code) {
+  if(code.length==8) {
+    if(code[0]==code[0].toUpperCase() && code[1]==code[1].toUpperCase() && code[2]==code[2].toUpperCase() && 
+      (code[3]==code[3].toUpperCase() || !isNaN(code[3]*1)) && 
+      !isNaN(code[4]*1) && !isNaN(code[5]*1) && !isNaN(code[6]*1) && !isNaN(code[7]*1)) {
+      return true
+    }
+    else {
+      return false
+    }
+  }
+  else {
+    return false
+  }
+}
+
+
 function remove_full_stop(str) {if(str.slice(-1)==".") {return str.slice(0,-1)} else {return str}};
+
+
+
+
+
+
+// >> MAIN FUNCTION
+
+const txt_file = "output.txt";
+root_course = "MATH2001";  // TODO: make the course code a command line argument
+
+const reader = require("fs");
+const txt_contents = reader.readFileSync(txt_file, "utf-8");
+
+output = search_children(root_course);
+
+output_to_json = JSON.stringify(output);
+
+var writer = require("fs");
+writer.writeFile("output.json", output_to_json, function(err) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      console.log("Output to JSON is successful! Congrats!!")
+    }
+});
+
+// << MAIN FUNCTION
 
