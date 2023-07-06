@@ -96,13 +96,23 @@ function remove_full_stop(str) {if(str.slice(-1)==".") {return str.slice(0,-1)} 
 
 // >> MAIN FUNCTION
 
-const txt_file = "output.txt";
+// const txt_file = "output.txt";
 root_course = "MATH2001";  // TODO: make the course code a command line argument
+const child1 = new Node('B');
+const child2 = new Node('C');
+const grandchild1 = new Node('D');
+const grandchild2 = new Node('E');
 
-const reader = require("fs");
-const txt_contents = reader.readFileSync(txt_file, "utf-8");
+root_course.addChild(child1);
+root_course.addChild(child2);
+child2.addChild(grandchild1);
+child2.addChild(grandchild2);
 
-output = search_children(root_course);
+// const reader = require("fs");
+// const txt_contents = reader.readFileSync(txt_file, "utf-8");
+
+// output = search_children(root_course);
+const output = getDescendants(root_course)
 
 output_to_json = JSON.stringify(output);
 
