@@ -1,1 +1,1 @@
-{"name":"MATH2001","children":[{"name":"B","children":[]},{"name":"C","children":[{"name":"D","children":[]},{"name":"E","children":[]}]}]}
+{"name":"COMP3506","children":[{"name":"CSSE2002","children":[{"name":"CSSE1001","children":[]},{"name":"ENGG1001","children":[]}]},{"name":"MATH1061","children":[]},{"name":"CSSE2010","children":[{"name":"CSSE1001","children":[]},{"name":"ENGG1001","children":[]}]},{"name":"STAT2202","children":[]}]}
