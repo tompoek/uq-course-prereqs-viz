@@ -97,7 +97,8 @@ function remove_full_stop(str) {if(str.slice(-1)==".") {return str.slice(0,-1)} 
 // >> MAIN FUNCTION
 
 // const txt_file = "output.txt";
-root_course = "MATH2001";  // TODO: make the course code a command line argument
+// root_course = "MATH2001";  // TODO: make the course code a command line argument
+const root_course = new Node('MATH2001');  // TODO: make the course code a cmd argument
 const child1 = new Node('B');
 const child2 = new Node('C');
 const grandchild1 = new Node('D');
