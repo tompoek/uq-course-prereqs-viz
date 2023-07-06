@@ -10,11 +10,16 @@ class Node {
 }
 
 
+// Recursive function to get the children of a node and its descendants
+// Traversing in Depth-First-Search manner
 function getDescendants(node) {
 
   const result = {name: node.name, children: []};
 
-  for (const childNode of node.children) {
+  children_names = get_children_names(node);
+
+  for (child_name of children_names) {
+    const childNode = new Node(child_name);
     const childDescendants = getDescendants(childNode);
     result.children.push(childDescendants);
   }
@@ -23,48 +28,33 @@ function getDescendants(node) {
 }
 
 
-// >> TODO: make it a recursive loop,
-// >> consider BFS first
-function search_children(course) {
-  output = {name: course, children: []};
-  keyword = course+",prerequisite,";
-  if(txt_contents.search(keyword)!=-1) {
-    lines = txt_contents.slice(txt_contents.search(keyword)+keyword.length);
-    line = lines.slice(0, lines.search(/\r?\n/));
-    children = get_children(line);
-    children.forEach((child) => {
-      output.children.push({name: child, children: []});
-      // >> Experiment recursive loop... this would be DFS
-      // output.children.push(search_children(child));
-      // << Experiment recursive loop.
-    })
-  }
-  return output;
-}
-// << TODO
-
-
-function get_children(line) {
+function get_children_names(node) {
   children = [];
 
-  line = remove_full_stop(line);
+  keyword = node.name + ',prerequisite,';
+  if (txt_contents.search(keyword)!=-1) {
+    line_start = txt_contents.slice(txt_contents.search(keyword)+keyword.length);
+    line = line_start.slice(0, line_start.search(/\r?\n/));
+    line = remove_full_stop(line);
 
-  // >> TOFIX: interpret parentheses
-  while(line.search(/\(/)!=-1) {line = line.replace("(", "")};
-  while(line.search(/\)/)!=-1) {line = line.replace(")", "")};
-  // << TOFIX: for now, we naively remove all parentheses
+    // >> TOFIX: interpret parentheses
+    while(line.search(/\(/)!=-1) {line = line.replace("(", "")};
+    while(line.search(/\)/)!=-1) {line = line.replace(")", "")};
+    // << TOFIX: for now, we naively remove all parentheses
 
-  // >> TOFIX: interpret "AND" relationship
-  while(line.search(" and ")!=-1) {line = line.replace(" and ", ",")};
-  // << TOFIX: for now, we naively remove all "AND"
+    // >> TOFIX: interpret "AND" relationship
+    while(line.search(" and ")!=-1) {line = line.replace(" and ", ",")};
+    // << TOFIX: for now, we naively remove all "AND"
 
-  // >> TOFIX: interpret "OR" relationship
-  while(line.search(" or ")!=-1) {line = line.replace(" or ", ",")};
-  // << TOFIX: for now, we naively remove all "OR"
+    // >> TOFIX: interpret "OR" relationship
+    while(line.search(" or ")!=-1) {line = line.replace(" or ", ",")};
+    // << TOFIX: for now, we naively remove all "OR"
 
-  line.split(",").forEach((leaf) => {
-    if(is_course_code(leaf)) {children.push(leaf)}
-  });
+    line.split(",").forEach((leaf) => {
+      if(is_course_code(leaf)) {children.push(leaf)}
+    });
+
+  }
 
   return children;
 };
@@ -96,13 +86,17 @@ function remove_full_stop(str) {if(str.slice(-1)==".") {return str.slice(0,-1)} 
 
 // >> MAIN FUNCTION
 
+// Read data file
 const txt_file = "output.txt";
-root_course = "MATH2001";  // TODO: make the course code a command line argument
-
 const reader = require("fs");
 const txt_contents = reader.readFileSync(txt_file, "utf-8");
 
-output = search_children(root_course);
+
+// Input: root node
+const root_course = new Node('COMP3506');  // TODO: make it a commander argument
+
+// Output: descendants
+const output = getDescendants(root_course)
 
 output_to_json = JSON.stringify(output);
 
