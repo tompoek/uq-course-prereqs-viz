@@ -1,3 +1,28 @@
+class Node {
+  constructor(name) {
+    this.name = name;
+    this.children = [];
+  }
+
+  addChild(child) {
+    this.children.push(child);
+  }
+}
+
+
+function getDescendants(node) {
+
+  const result = {name: node.name, children: []};
+
+  for (const childNode of node.children) {
+    const childDescendants = getDescendants(childNode);
+    result.children.push(childDescendants);
+  }
+
+  return result;
+}
+
+
 // >> TODO: make it a recursive loop,
 // >> consider BFS first
 function search_children(course) {
