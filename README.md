@@ -2,10 +2,10 @@
 
 ### Instructions
 
-Run the following commands:
+Run the following commands: (incl. the mandatory course code example)
 
 ```
-node script.js
+node script.js COMP3506
 cat output.json
 ```
 
