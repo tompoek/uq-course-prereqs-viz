@@ -1,4 +1,8 @@
+// Class definition of Node which semantically represents a Course
 class Node {
+  // In this script, we want to adopt our output object syntax to S3 viz tool,
+  // which defines "name" as a property to display, although it semantically means a course code,
+  // to be consistent in the whole script, we will stick to this syntax ("name") instead of aligning with semantics ("code").
   constructor(name) {
     this.name = name;
     this.children = [];
@@ -28,14 +32,16 @@ function getDescendants(node) {
 }
 
 
+// Function that extracts names of children of a given node (course)
+// by searching in the contents of a text file
 function get_children_names(node) {
-  children = [];
+  children_names = [];
 
-  keyword = node.name + ',prerequisite,';
+  keyword = node.name + ',prerequisite,';  // Define our keyword to search for
   if (txt_contents.search(keyword)!=-1) {
-    line_start = txt_contents.slice(txt_contents.search(keyword)+keyword.length);
-    line = line_start.slice(0, line_start.search(/\r?\n/));
-    line = remove_full_stop(line);
+    line_start = txt_contents.slice(txt_contents.search(keyword));  // Find the start of line with keyword
+    line = line_start.slice(keyword.length, line_start.search(/\r?\n/));  // Slice the line that contains children names
+    if (line.slice(-1)==".") {line = line.slice(0,-1)};  // Remove full stop if any
 
     // >> TOFIX: interpret parentheses
     while(line.search(/\(/)!=-1) {line = line.replace("(", "")};
@@ -50,21 +56,23 @@ function get_children_names(node) {
     while(line.search(" or ")!=-1) {line = line.replace(" or ", ",")};
     // << TOFIX: for now, we naively remove all "OR"
 
-    line.split(",").forEach((leaf) => {
-      if(is_course_code(leaf)) {children.push(leaf)}
+    line.split(",").forEach((str) => {
+      if(is_course_name(str)) {children_names.push(str)}
     });
 
   }
 
-  return children;
+  return children_names;
 };
 
 
-function is_course_code(code) {
-  if(code.length==8) {
-    if(code[0]==code[0].toUpperCase() && code[1]==code[1].toUpperCase() && code[2]==code[2].toUpperCase() && 
-      (code[3]==code[3].toUpperCase() || !isNaN(code[3]*1)) && 
-      !isNaN(code[4]*1) && !isNaN(code[5]*1) && !isNaN(code[6]*1) && !isNaN(code[7]*1)) {
+// Function that verifies if an eight-chars string is a course name.
+// Criteria: First three chars are upper-case-letters; Fourth char is either upper-case-letter or digit; Last four chars are digits.
+function is_course_name(str) {
+  if(str.length==8) {
+    if(str[0]==str[0].toUpperCase() && str[1]==str[1].toUpperCase() && str[2]==str[2].toUpperCase() && 
+      (str[3]==str[3].toUpperCase() || !isNaN(str[3]*1)) && 
+      !isNaN(str[4]*1) && !isNaN(str[5]*1) && !isNaN(str[6]*1) && !isNaN(str[7]*1)) {
       return true
     }
     else {
@@ -77,29 +85,29 @@ function is_course_code(code) {
 }
 
 
-function remove_full_stop(str) {if(str.slice(-1)==".") {return str.slice(0,-1)} else {return str}};
 
 
 
 
 
 
-// >> MAIN FUNCTION
+// >> MAIN FUNCTION START
 
 // Read data file
 const txt_file = "output.txt";
 const reader = require("fs");
 const txt_contents = reader.readFileSync(txt_file, "utf-8");
 
-
 // Input: root node
-const root_course = new Node('COMP3506');  // TODO: make it a commander argument
+const root = new Node('COMP3506');  // TODO: make it a commander argument
 
 // Output: descendants
-const output = getDescendants(root_course)
+const output = getDescendants(root)
 
+// Convert output to json format
 output_to_json = JSON.stringify(output);
 
+// Write json-formatted output into json file
 var writer = require("fs");
 writer.writeFile("output.json", output_to_json, function(err) {
     if (err) {
@@ -110,5 +118,5 @@ writer.writeFile("output.json", output_to_json, function(err) {
     }
 });
 
-// << MAIN FUNCTION
+// << MAIN FUNCTION END
 
