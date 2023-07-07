@@ -93,13 +93,23 @@ function is_course_name(str) {
 
 // >> MAIN FUNCTION START
 
+// Assess command line arguments
+const args = process.argv.slice(2);  // Exclude the first (Node.js path) and second (script path) arguments
+if (args.length==0) {
+  console.log("Error: No argument (course) provided!");
+  return;
+}
+else {
+  root_name = args[0];
+}
+
 // Read data file
 const txt_file = "output.txt";
 const reader = require("fs");
 const txt_contents = reader.readFileSync(txt_file, "utf-8");
 
 // Input: root node
-const root = new Node('COMP3506');  // TODO: make it a commander argument
+const root = new Node(root_name);
 
 // Output: descendants
 const output = getDescendants(root)
