@@ -1,0 +1,122 @@
+COMP2048,incompatible,
+COMP2048,prerequisite,MATH1061 and (CSSE1001 or ENGG1001)
+COMP3506,incompatible,COMP2502 or COMP7505
+COMP3506,prerequisite,CSSE2002 and (MATH1061 or (CSSE2010 and STAT2202))
+CSSE1001,incompatible,COMP1502 and CSSE7030 and ENGG1001
+CSSE1001,prerequisite,
+CSSE2002,incompatible,COMP2500 or COMP7908 or CSSE7023
+CSSE2002,prerequisite,CSSE1001 or ENGG1001
+CSSE2010,incompatible,COMP1300 or COMP2303 or COMP2302 or CSSE1000 or CSSE7035 or CSSE7201 or ELEC2002
+CSSE2010,prerequisite,CSSE1001 or ENGG1001
+INFS1200,incompatible,INFS7900 or MGTS3203 or MGTS7206 or BISM2207 or BISM3203 or BISM7206
+INFS1200,prerequisite,
+MATH1061,incompatible,MATH7861 (co-taught).
+MATH1061,prerequisite,
+STAT1201,incompatible,ECON1310 and ENVM2000 and STAT1301 and STAT2201 and STAT2203 and STAT2701 and PUBH2007 or HRSS3100.
+STAT1201,prerequisite,MATH1040; or A grade of C or higher in Queensland Year 12 Mathematical Methods (Units 3 & 4) (or equivalent).
+STAT1301,incompatible,ECON1310 and ENVM2000 and STAT1201 and STAT2201 and STAT2203 and STAT2701 and PUBH2007 or HRSS3100.
+STAT1301,prerequisite,MATH1040; or A grade of C or higher in Queensland Mathematical Methods (Units 3 & 4) (or equivalent).
+DECO3801,incompatible,CSSE3004 or CSSE3005 or CSSE7024 or CSSE7025
+DECO3801,prerequisite,CSSE2002 or COMP2140
+COMP2140,incompatible,
+COMP2140,prerequisite,DECO1400 and (CSSE1001 or ENGG1001)
+COSC2500,incompatible,MATH2200 and COSC7500 (co-taught).
+COSC2500,prerequisite,SCIE1000 or (CSSE1001 and MATH1051 or MATH1071) or (MATH1051 or MATH1071 and MATH1052 or MATH1072)
+CSSE2310,incompatible,COMP2303 or COMP7306 or CSSE7231
+CSSE2310,prerequisite,CSSE1001 or ENGG1001
+DATA2001,incompatible,DATA7001
+DATA2001,prerequisite,(CSSE1001 or ENGG1001) and INFS1200
+DECO1400,incompatible,DECO7140 or IENV7961 or MMDS1400 or MMDS7961
+DECO1400,prerequisite,
+DECO2500,incompatible,COMP2506 or COMP3501 or COMP7904 or DECO7250
+DECO2500,prerequisite,DECO1400 or CSSE1001 or ENGG1001
+INFS2200,incompatible,BSIS7206 or COMM7605 or INFS7903
+INFS2200,prerequisite,INFS1200
+MATH1051,incompatible,MATH1071 and MATH7051 (co-taught).
+MATH1051,prerequisite,MATH1050 or; A grade of C or higher in Queensland Year 12 Specialist Mathematics (Units 3 & 4) (or equivalent).
+MATH1071,incompatible,MATH1051 and MATH7051 and MATH7501
+MATH1071,prerequisite,A grade of 6 or above in MATH1050; or A grade of B or higher in Queensland Year 12 Specialist Mathematics (Units 3 & 4) (or equivalent).
+COMP3301,incompatible,COMP3300 or COMP7303 or COMP7308
+COMP3301,prerequisite,COMP2303 or CSSE2310
+COMP3320,incompatible,
+COMP3320,prerequisite,CSSE2310 and (COMS3000 or CYBR3000)
+COMP3400,incompatible,
+COMP3400,prerequisite,MATH1061 and CSSE2002
+COMP3702,incompatible,COMP3701 or COMP7701 or COMP7702
+COMP3702,prerequisite,CSSE1001 or ENGG1001
+COMP3710,incompatible,
+COMP3710,prerequisite,(MATH1051 or MATH1071) and (CSSE1001 or ENGG1001)
+COMP3820,incompatible,COMP3000 in 2018 or 2019 or 2020
+COMP3820,prerequisite,(CSSE2002 or CSSE7023 or COMP2140 or CSSE2310 or CSSE7231) and (DECO2500 or DECO7250 or BIOE6901)
+COMP4403,incompatible,COMP7402
+COMP4403,prerequisite,COMP3506
+COMP4702,incompatible,COGS4021 or COMP3700 or COMP7703 or ELEC4700 or ELEC7701
+COMP4702,prerequisite,(CSSE1001 or ENGG1001) and (MATH1051 or MATH1071) and (STAT1201 or STAT2003 or STAT2201 or STAT2202 or STAT2203)
+COMS3200,incompatible,COMS7201
+COMS3200,prerequisite,COMP2303 OR CSSE2310
+COSC3000,incompatible,MATH3203
+COSC3000,prerequisite,COSC2500 or CSSE2002
+COSC3500,incompatible,COSC7502
+COSC3500,prerequisite,COSC2500 or CSSE2002
+CSSE3012,incompatible,COMP3500 or COMP7503 or CSSE3002 or CSSE7001
+CSSE3012,prerequisite,(CSSE2002 and DECO2800) or CSSE3200
+CSSE3100,incompatible,
+CSSE3100,prerequisite,MATH1061 and CSSE2002
+CSSE3200,incompatible,DECO2800
+CSSE3200,prerequisite,CSSE2002
+CYBR3000,incompatible,COMS3000 and COMS7003 and CYBR7002
+CYBR3000,prerequisite,CSSE2310 or CSSE7231
+DECO3500,incompatible,COMP3505 or COMP7705 or DECO7350
+DECO3500,prerequisite,(DECO2500 or DECO7250) and (CSSE1001 or ENGG1001 or CSSE7030)
+INFS3200,incompatible,INFS7907
+INFS3200,prerequisite,INFS2200
+INFS3202,incompatible,INFS7202
+INFS3202,prerequisite,(CSSE1001 or ENGG1001) and INFS1200 and DECO1400
+INFS3208,incompatible,INFS3204 or INFS7204 or INFS7208
+INFS3208,prerequisite,CSSE1001 and INFS1200
+INFS4203,incompatible,INFS7203
+INFS4203,prerequisite,(CSSE1001 or ENGG1001) and INFS2200
+INFS4205,incompatible,INFS4200 or INFS7200 or INFS7205
+INFS4205,prerequisite,INFS2200
+MATH3201,incompatible,
+MATH3201,prerequisite,(MATH2000 or MATH2001) and (COSC2500 or MATH2100)
+MATH3202,incompatible,
+MATH3202,prerequisite,(MATH1051 or MATH1071) and (MATH1052 or MATH1072)
+MATH3302,incompatible,
+MATH3302,prerequisite,MATH2301
+DECO1100,incompatible,DECO7110 or IENV1000 or IENV1301 or IENV7911 or IENV7913
+DECO1100,prerequisite,
+DECO1400,incompatible,DECO7140 or IENV7961 or MMDS1400 or MMDS7961
+DECO1400,prerequisite,
+DECO1800,incompatible,DECO7180 or IENV1000 or IENV1801 or IENV7911 or MMDS1801
+DECO1800,prerequisite,DECO1400
+DECO2300,incompatible,DECO7230
+DECO2300,prerequisite,DECO2500 and (CSSE1001 or ENGG1001)
+DECO2850,incompatible,DECO2800 or DECO7280 or DECO7285
+DECO2850,prerequisite,DECO1800
+DECO3850,incompatible,DECO7385
+DECO3850,prerequisite,DECO2300 and DECO2500 and (DECO2800 or DECO2850)
+ENGG1300,incompatible,ENGG1030 or ENGG1060 or ELEC1000
+ENGG1300,prerequisite,Mathematical Methods and Maths B or MATH1040.
+MATH1050,incompatible,MATH1051 and MATH1052 and MATH7050 (co-taught) or A grade of B or higher in Queensland Year 12 Specialist Mathematics (Units 3 & 4) (or equivalent)
+MATH1050,prerequisite,MATH1040; or A grade of C or higher in Queensland Year 12 Mathematical Methods (Units 3 & 4) (or equivalent).
+MATH1051,incompatible,MATH1071 and MATH7051 (co-taught).
+MATH1051,prerequisite,MATH1050 or; A grade of C or higher in Queensland Year 12 Specialist Mathematics (Units 3 & 4) (or equivalent).
+MATH1052,incompatible,MATH1072 and MATH7052
+MATH1052,prerequisite,MATH1050 or A grade of C or higher in Queensland Year 12 Specialist Mathematics (Units 3 & 4) (or equivalent).
+MATH2001,incompatible,MATH2000 and MATH2901 (advanced) and MATH7000 (co-taught).
+MATH2001,prerequisite,(MATH1051 or MATH1071) and (MATH1052 or MATH1072)
+MATH2301,incompatible,MATH2300; MATH7307
+MATH2301,prerequisite,MATH1051 or MATH1071 and MATH1061
+MATH2302,incompatible,MATH2300 and MATH7308 (co-taught).
+MATH2302,prerequisite,MATH1061
+MATH3104,incompatible,MATH7134
+MATH3104,prerequisite,MATH2100
+SCIE1000,incompatible,SCIE1100
+SCIE1000,prerequisite,
+SCIE2100,incompatible,COSC2000
+SCIE2100,prerequisite,(SCIE1000 and STAT1201) or (MATH1051 or MATH1071 and CSSE1001)
+STAT2003,incompatible,STAT2001
+STAT2003,prerequisite,MATH1051 or MATH1071
+STAT2004,incompatible,STAT2002
+STAT2004,prerequisite,((MATH1051 or MATH1071) + (STAT1201 and STAT1301 or STAT2201) + STAT2003 OR STAT2203
