@@ -5,7 +5,7 @@
 Run the following commands: (incl. the mandatory course code example)
 
 ```
-node script.js COMP3506
+node convert-script.js COMP3506
 cat output.json
 ```
 
