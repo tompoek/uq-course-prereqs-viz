@@ -5,7 +5,14 @@
 </head>
 <body>
   <h2>UQ Courses Prerequisites Viz</h2>
+  <form>
+    <label for="search">Search:</label>
+    <input type="search" id="search" name="search" placeholder="Test: COMP3506">
+    <button onclick="mainFunction()">Go</button>
+    <div id="output"></div>
+  </form>
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="/Users/tompoek/repos/uq-course-prereqs-viz/visualise-script.js"></script>
+  <script src="convert-script.js"></script>
+  <script src="visualise-script.js"></script>
 </body>
 </html>

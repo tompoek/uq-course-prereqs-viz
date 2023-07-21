@@ -20,7 +20,7 @@ function getDescendants(node) {
 
   const result = {name: node.name, children: []};
 
-  children_names = get_children_names(node);
+  children_names = getChildrenNames(node);
 
   for (child_name of children_names) {
     const childNode = new Node(child_name);
@@ -34,7 +34,7 @@ function getDescendants(node) {
 
 // Function that extracts names of children of a given node (course)
 // by searching in the contents of a text file
-function get_children_names(node) {
+function getChildrenNames(node) {
   children_names = [];
 
   keyword = node.name + ',prerequisite,';  // Define our keyword to search for
@@ -57,7 +57,7 @@ function get_children_names(node) {
     // << TOFIX: for now, we naively remove all "OR"
 
     line.split(",").forEach((str) => {
-      if(is_course_name(str)) {children_names.push(str)}
+      if(isCourseName(str)) {children_names.push(str)}
     });
 
   }
@@ -68,7 +68,7 @@ function get_children_names(node) {
 
 // Function that verifies if an eight-chars string is a course name.
 // Criteria: First three chars are upper-case-letters; Fourth char is either upper-case-letter or digit; Last four chars are digits.
-function is_course_name(str) {
+function isCourseName(str) {
   if(str.length==8) {
     if(str[0]==str[0].toUpperCase() && str[1]==str[1].toUpperCase() && str[2]==str[2].toUpperCase() && 
       (str[3]==str[3].toUpperCase() || !isNaN(str[3]*1)) && 
@@ -90,43 +90,46 @@ function is_course_name(str) {
 
 
 
-
-// >> MAIN FUNCTION START
-
-// Assess command line arguments
-const args = process.argv.slice(2);  // Exclude the first (Node.js path) and second (script path) arguments
-if (args.length==0) {
-  console.log("Error: No argument (course) provided!");
-  return;
-}
-else {
-  root_name = args[0];
-}
-
+// DEFINE GLOBAL VARIABLES
 // Read data file
-const txt_file = "output.txt";
-const reader = require("fs");
-const txt_contents = reader.readFileSync(txt_file, "utf-8");
+// TOFIX: Error due to require("fs") library only supported by node.js but not html
+// TESTING: Hard code data
+const txt_contents = "COMP3506,prerequisite,CSSE2002 and (MATH1061 or (CSSE2010 and STAT2202))\nCSSE2002,prerequisite,CSSE1001 or ENGG1001\nMATH1061,prerequisite,\nCSSE2010,prerequisite,CSSE1001 or ENGG1001\nCSSE1001,prerequisite,\n";
+// const txt_file = "output.txt";
+// const reader = require("fs");
+// const txt_contents = reader.readFileSync(txt_file, "utf-8");
 
-// Input: root node
-const root = new Node(root_name);
 
-// Output: descendants
-const output = getDescendants(root)
+// MAIN FUNCTION
+function mainFunction() {
 
-// Convert output to json format
-output_to_json = JSON.stringify(output);
 
-// Write json-formatted output into json file
-var writer = require("fs");
-writer.writeFile("output.json", output_to_json, function(err) {
-    if (err) {
-      console.log(err);
-    }
-    else {
-      console.log("Output to JSON is successful! Congrats!!")
-    }
-});
+  // // Input: root node
+  const root_name = document.getElementById("search").value;
+  const root = new Node(root_name);
 
-// << MAIN FUNCTION END
+  // Output: descendants
+  // TOFIX: Error after switching from node.js to html
+  const output = getDescendants(root);
+
+  // Convert output to json format
+  output_to_json = JSON.stringify(output);
+
+  // Write json-formatted output into json file
+  // TOFIX: Error due to require("fs") library only supported by node.js but not html
+  // TESTING: Show output json object in html
+  const output_html = document.getElementById("output");
+  output_html.innerHTML = output_to_json;
+  // var writer = require("fs");
+  // writer.writeFile("output.json", output_to_json, function(err) {
+  //     if (err) {
+  //       console.log(err);
+  //     }
+  //     else {
+  //       console.log("Output to JSON is successful! Congrats!!")
+  //     }
+  // });
+
+
+}
 
