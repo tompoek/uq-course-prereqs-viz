@@ -2,13 +2,8 @@
 
 ### Instructions
 
-Run the following commands: (incl. the mandatory course code example)
-
-```
-node convert-script.js COMP3506
-cat output.json
-```
+[![Watch demo video](./demo-search-comp3506.png)](./demo-search-comp3506.mov)
 
 Test visualising the output.json in this visualiser:
-
+TO-BE-DEPRECATED: No paid license of ObservableHQ
 https://observablehq.com/d/1217150e8cb81493
