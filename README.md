@@ -2,7 +2,7 @@
 
 ### Instructions
 
-[![Watch demo video](./demo-search-comp3506.png)](./demo-search-comp3506.mov)
+[![Watch demo video](./demo-search-comp3506.png)](https://github.com/tompoek/uq-course-prereqs-viz/raw/main/demo-search-comp3506.mov)
 
 Test visualising the output.json in this visualiser:
 TO-BE-DEPRECATED: No paid license of ObservableHQ
